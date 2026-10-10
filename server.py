@@ -58,9 +58,6 @@ class Handler(SimpleHTTPRequestHandler):
         # Avoid logging full URLs/query strings; only log request path.
         path = urlparse(self.path).path
         print(f'{self.address_string()} {self.command} {path}')
-
-if __name__ == '__main__':
-    print(f'Dashboard: http://{HOST}:{PORT}')
-    print('API health: /api/health | Quote: /api/quote?code=sh000688')
-    print('Note: upstream coverage, delays, and licensing must be verified before production use.')
+if __name__ == "__main__":
+    print(f"Starting server on {HOST}:{PORT}")
     ThreadingHTTPServer((HOST, PORT), Handler).serve_forever()
