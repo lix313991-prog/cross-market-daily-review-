@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>跨市场每日复盘工作台 · 15序列</title>
+<style>
+:root{--bg:#0a1020;--panel:#111b2e;--panel2:#17243a;--line:#263650;--text:#e8eef8;--muted:#91a2bc;--red:#ff667a;--green:#45d6a0;--gold:#f3c969;--blue:#78aaff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#14233d 0,#0a1020 55%);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--text)}
+header{padding:22px 26px 16px;border-bottom:1px solid var(--line);position:sticky;top:0;background:#0a1020ed;backdrop-filter:blur(12px);z-index:5}
+.top{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}.eyebrow{color:var(--blue);font-size:11px;letter-spacing:2px;font-weight:700}.title{font-size:25px;font-weight:800;letter-spacing:.3px}.sub{color:var(--muted);margin-top:4px}.pill{border:1px solid #785f2e;color:var(--gold);background:#332914;padding:6px 10px;border-radius:20px;font-size:12px}
+.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:16px}.btn,select,input{background:var(--panel2);border:1px solid var(--line);color:var(--text);padding:9px 11px;border-radius:9px;font:inherit}.btn{cursor:pointer}.btn.active,.btn:hover{border-color:var(--blue);background:#203656}.note{font-size:12px;color:var(--gold);margin-top:10px}
+main{padding:22px 26px 50px;max-width:1500px;margin:auto}.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.metric,.panel,.module{background:linear-gradient(145deg,#121e32,#0f192a);border:1px solid var(--line);border-radius:14px}.metric{padding:16px}.metric .label{font-size:12px;color:var(--muted)}.metric .value{font-size:24px;font-weight:800;margin:8px 0 4px}.metric .foot{font-size:11px;color:var(--gold)}.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:26px 0 12px}.sectionhead h2{margin:0;font-size:18px}.sectionhead p{margin:3px 0 0;color:var(--muted);font-size:12px}.modules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.module{padding:15px;min-width:0}.module-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}.num{display:grid;place-items:center;width:38px;height:36px;background:#21334e;border:1px solid #304867;border-radius:9px;color:#c9dcff;font-weight:800}.module h3{font-size:14px;margin:0}.module small{color:var(--muted)}.tag{font-size:10px;border:1px solid var(--line);padding:3px 6px;border-radius:6px;color:var(--muted);margin-left:auto}.fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.field{background:#0b1424;border-radius:8px;padding:9px;min-width:0}.field b{display:block;font-size:12px;font-weight:600}.field span{display:block;color:var(--muted);font-size:11px;margin-top:3px}.source{border-top:1px solid var(--line);padding-top:9px;margin-top:11px;color:#8da1bd;font-size:11px}.empty{padding:24px;color:var(--muted)}.integration{margin-top:24px;padding:16px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(145deg,#121e32,#0f192a)}.integration h2{font-size:18px;margin:0 0 6px}.integration p{color:var(--muted);font-size:12px;margin:4px 0 12px}.integration-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.source-card{border:1px solid var(--line);background:#0b1424;border-radius:10px;padding:12px}.source-card b{display:block;margin-bottom:5px}.source-card span{display:block;color:var(--muted);font-size:12px}.source-card a{display:inline-block;color:var(--blue);font-size:12px;margin-top:8px;text-decoration:none}.source-card a:hover{text-decoration:underline}.integration-note{margin-top:12px;padding:10px;border-radius:8px;background:#332914;color:var(--gold);font-size:12px}footer{border-top:1px solid var(--line);padding:18px 26px;color:var(--muted);font-size:12px}.status{display:inline-block;width:7px;height:7px;background:var(--gold);border-radius:50%;margin-right:6px}
+@media(max-width:1100px){.modules{grid-template-columns:repeat(2,minmax(0,1fr))}.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){.integration-grid{grid-template-columns:1fr}.header{padding:16px}main{padding:16px}.modules{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.title{font-size:21px}.metric{padding:12px}.metric .value{font-size:20px}.fields{gap:6px}.field{padding:8px}}
+</style>
+</head>
+<body>
+<header><div class="top"><div><div class="eyebrow">MARKET INTELLIGENCE / CROSS-MARKET</div><div class="title">每日复盘与热点追踪工作台</div><div class="sub">A股 · 港股 · 美股 ｜ 原图 15 个序列完整保留</div></div><div class="pill">接入准备版 · 非实时行情</div></div>
+<div class="controls"><button class="btn active" data-market="全部市场">全部市场</button><button class="btn" data-market="A股">A股</button><button class="btn" data-market="港股">港股</button><button class="btn" data-market="美股">美股</button><input id="search" placeholder="搜索序列 / 指标 / 字段…" aria-label="搜索"><select id="session"><option>盘中监控</option><option>收盘复盘</option></select><button class="btn" id="refresh">刷新本地时间</button><button class="btn" id="export">导出15序列清单 CSV</button></div>
+<div class="note"><span class="status"></span>当前页面包含15序列方案与数据接入路线；科创50（000688）已加入。尚未连接行情、新闻或公告 API；刷新按钮只更新时间戳，不会获取真实市场数据。</div></header>
+<main>
+<div class="grid">
+<div class="metric"><div class="label">跨市场状态</div><div class="value">待接入</div><div class="foot">A股 / 港股 / 美股</div></div>
+<div class="metric"><div class="label">指数与成交额</div><div class="value">—</div><div class="foot">真实快照数据待接入</div></div>
+<div class="metric"><div class="label">科创50 · 000688</div><div class="value">—</div><div class="foot">上交所指数｜实时行情待接入</div></div>
+<div class="metric"><div class="label">热点与资金</div><div class="value">待计算</div><div class="foot">板块、概念、资金流向</div></div>
+<div class="metric"><div class="label">最近刷新</div><div class="value" id="stamp" style="font-size:19px">尚未刷新</div><div class="foot">仅为本地演示时间</div></div>
+</div>
+<section class="integration" aria-labelledby="integration-title">
+<h2 id="integration-title">下一步：真实数据接入路线</h2>
+<p>建议先打通指数/个股行情，再逐步接入公告、新闻、资金流与龙虎榜。当前页面仍为静态原型，这里是接入方案入口，不代表已连通任何服务。</p>
+<div class="integration-grid">
+<div class="source-card"><b>方案 A｜iTick 多市场行情</b><span>适合作为 A股、港股、美股的行情适配候选；需查看账号权限、额度、延迟与许可，并配置 API Token。</span><a href="https://docs.itick.org/zh-cn/rest-api/stocks/stock-quote" target="_blank" rel="noopener">查看实时报价文档 ↗</a></div>
+<div class="source-card"><b>方案 B｜A股行情快速验证</b><span>可先验证部分股票快照接口；覆盖指数、限流、跨市场一致性与商业使用条款需逐项核对。</span><a href="https://ashareapi.com/docs/endpoints/quote/" target="_blank" rel="noopener">查看快照接口文档 ↗</a></div>
+<div class="source-card"><b>独立数据源｜公告与事件</b><span>公司公告/交易所披露、新闻、龙虎榜和资金流通常需要独立接口或授权数据；每条数据需记录来源与时间戳。</span><a href="https://www.sse.com.cn/" target="_blank" rel="noopener">上交所官网 ↗</a></div>
+</div>
+<div class="integration-note">安全与准确性：不要把 API 密钥直接写进公开网页或发到聊天里。正式版应由后端保存密钥、代理请求并记录数据时间戳；盘中刷新频率应遵守供应商限额。</div>
+<div style="margin-top:14px;border-top:1px solid var(--line);padding-top:14px">
+<b style="display:block;margin-bottom:8px">行情接口连通性测试（需启动本地后端）</b>
+<div class="controls" style="margin-top:0"><input id="quoteCode" value="sh000688" aria-label="行情代码" placeholder="例如 sh000688 / hk00700 / usAAPL"><button class="btn" id="testQuote">查询行情</button><span id="apiStatus" style="color:var(--muted);font-size:12px">后端状态：尚未检测</span></div>
+<div id="quoteResult" class="field" style="margin-top:10px"><b>测试结果</b><span>启动配套后端后，可在此验证数据源返回的字段。当前不会伪造行情数值。</span></div>
+</div>
+</section>
+<div class="sectionhead"><div><h2>15 序列总览</h2><p>每个模块均包含建议字段、展示区块和推荐数据来源；接入前不显示伪造的实时数值。</p></div><div id="count" style="color:var(--muted);font-size:12px">15 个模块</div></div>
+<div class="modules" id="modules"></div>
+</main>
+<footer>数据接入建议：行情快照/历史K线/指数与成交额；交易所公告与公司披露；新闻供应商；龙虎榜及资金流数据。各市场的实时权限、延迟、使用范围与再分发许可需按供应商合同确认。<br>风险提示：此工具用于资讯整理与复盘，不构成投资建议。技术指标、资金流口径及跨市场交易时段需在第 14 序列统一配置。</footer>
+<script>
+const data=[
+["盘面总览","大盘走势与量能","指数涨跌幅、开高低收、成交额/量、量比、涨跌家数、换手率、波动率；重点跟踪科创50（000688）","指数卡片（含科创50/000688）、分时/日K、成交额曲线、涨跌分布","上交所科创50官方页面（代码000688）、交易所行情或持牌行情供应商","A股/港股/美股"],
+["盘面总览","涨停梯队与情绪","涨停/跌停数、连板高度、晋级率、炸板率、封板时间、开板次数、上涨/下跌家数","涨停梯队表、连板树、情绪周期、炸板榜","A股交易所行情、公告、合规行情终端；港美股用涨跌幅/异动替代涨停梯队","A股为主；港美股适配"],
+["热点与资金","热点板块与题材","行业/主题涨幅、成交额、相对强度、领涨股、扩散率、持续天数","板块热力图、涨幅排行、主题强度排行","交易所分类、行情供应商、指数/ETF成分数据","三市场"],
+["热点与资金","热点概念与主题","概念名称、触发事件、相关标的、首次发酵时间、催化强度、持续性、证据链接","主题聚类、事件时间线、概念—股票关联图","新闻供应商、公司公告、交易所披露、人工核验标签","三市场"],
+["热点与资金","消息面与政策","发布时间、来源、标题、事件类型、涉及标的、重要性、原文链接、可信度","快讯流、政策日历、事件影响列表","政府/监管官网、交易所公告、公司 IR、授权新闻 API","三市场"],
+["热点与资金","资金流向","成交额、主动买卖估算、资金净流入、ETF申赎、行业流向、大单口径","资金流排名、流入流出对照、资金趋势","授权行情/资金数据商、ETF发行人数据；注明估算方法","三市场，口径因源而异"],
+["热点与资金","龙虎榜与游资","上榜原因、买卖席位、买入/卖出额、净额、机构席位、历史行为标签","龙虎榜明细、席位净额榜、席位历史跟踪","沪深交易所龙虎榜公开披露、合规数据供应商","A股为主"],
+["背景与验证","宏观与外围","利率、汇率、国债收益率、通胀/就业数据、商品、海外指数、经济日历","宏观日历、跨市场指数对照、事件提醒","央行/统计部门/监管机构、交易所、FRED等官方数据源","三市场及全球宏观"],
+["背景与验证","技术面研判","均线、RSI、MACD、ATR、成交量、缺口、支撑/阻力、趋势状态","K线与指标叠加、关键位标注、趋势标签","行情供应商历史K线；指标由本地规则计算","三市场"],
+["背景与验证","风格轮动","大盘/小盘、成长/价值、周期/防御、行业相对收益、波动与动量","风格相对强度曲线、轮动矩阵、阶段排名","指数公司、ETF成分、历史行情供应商","三市场"],
+["背景与验证","行业景气与基本面","营收/利润增速、毛利率、现金流、指引、估值、预期差、财报日期","行业比较表、财报日历、基本面趋势","公司年报/季报、交易所披露、监管申报、授权基本面数据","三市场"],
+["输出","重要个股动态","代码、名称、价格/涨跌、异动原因、公告、催化、风险、关注级别、更新时间","自选股列表、异动卡片、公告时间线","交易所/公司公告、授权行情与新闻 API","三市场"],
+["输出","次日策略与风控","观察主题、触发条件、失效条件、风险事件、仓位上限、止损纪律、计划复核时间","情景计划、风险清单、观察价位、复盘 checklist","由前 1–12 序列证据生成；交易规则由用户配置","三市场"],
+["附录与维护","口径默认值与调参","时区、交易日历、复权方式、涨跌幅口径、资金流定义、阈值、刷新频率、异常处理","参数表、数据字典、配置版本、变更记录","项目配置文件、供应商字段文档、交易所规则","三市场分别配置"],
+["附录与维护","数据来源附录","供应商/接口、字段映射、更新时间、延迟、许可、故障状态、原始链接、质量评分","来源登记表、延迟监控、缺失率、异常日志","API状态页、授权合同、接口文档、来源原文","三市场分别登记"]
+];
+const groups=["盘面总览","热点与资金","背景与验证","输出","附录与维护"];
+function render(){const q=document.getElementById('search').value.trim().toLowerCase();const market=document.querySelector('[data-market].active').dataset.market;const box=document.getElementById('modules');box.innerHTML='';let n=0;
+data.forEach((d,i)=>{const searchable=d.join(' ').toLowerCase();if(q&&!searchable.includes(q))return;if(market!=="全部市场"&&!d[5].includes(market))return;n++;const el=document.createElement('article');el.className='module';el.innerHTML=`<div class="module-head"><div class="num">${String(i+1).padStart(2,'0')}</div><div><small>${d[0]}</small><h3>${d[1]}</h3></div><span class="tag">字段方案</span></div><div class="fields"><div class="field"><b>核心字段</b><span>${d[2]}</span></div><div class="field"><b>展示区块</b><span>${d[3]}</span></div></div><div class="source"><b>建议数据来源：</b>${d[4]}<br><b>市场：</b>${d[5]}</div>`;box.appendChild(el)});
+document.getElementById('count').textContent=`显示 ${n} / 15 个模块`;if(!n)box.innerHTML='<div class="empty">没有找到匹配的模块。试试其他关键词或市场。</div>'}
+document.querySelectorAll('[data-market]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-market]').forEach(x=>x.classList.remove('active'));b.classList.add('active');render()}));
+document.getElementById('search').addEventListener('input',render);
+document.getElementById('refresh').addEventListener('click',()=>{document.getElementById('stamp').textContent=new Date().toLocaleTimeString('zh-CN',{hour12:false});});
+document.getElementById('testQuote').addEventListener('click',async()=>{
+ const code=document.getElementById('quoteCode').value.trim(); const status=document.getElementById('apiStatus'); const result=document.getElementById('quoteResult');
+ if(!code){status.textContent='请输入行情代码';return;}
+ status.textContent='正在请求本地后端…'; result.innerHTML='<b>测试结果</b><span>请求中，请稍候…</span>';
+ try{
+  const r=await fetch('/api/quote?code='+encodeURIComponent(code));
+  const payload=await r.json();
+  if(!r.ok) throw new Error(payload.error||('HTTP '+r.status));
+  status.textContent='接口已返回数据';
+  const safe=v=>String(v??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const data=payload.data??payload;
+  result.innerHTML='<b>测试结果 · '+safe(code)+'</b><span>'+safe(JSON.stringify(data))+'</span>';
+ }catch(e){status.textContent='未连通：请确认已启动后端';result.innerHTML='<b>测试结果</b><span>'+String(e.message||e).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))+'。本地直接双击 HTML 时，浏览器无法访问 /api；请按项目 README 启动服务。</span>';}
+});
+document.getElementById('export').addEventListener('click',()=>{const rows=[["序号","模块","序列名称","核心字段","展示区块","建议数据来源","市场"] ,...data.map((d,i)=>[String(i+1).padStart(2,'0'),...d])];const csv='\ufeff'+rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');const url=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));const a=document.createElement('a');a.href=url;a.download='跨市场每日复盘看板_15序列.csv';a.click();URL.revokeObjectURL(url)});
+render();
+</script>
+</body></html>
