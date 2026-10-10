@@ -1,8 +1,8 @@
 services:
-- type: web
+* type: web
     name: cross-market-daily-review
     runtime: python
     plan: free
-    buildCommand: “python –version”
-    startCommand: “python -c "import os; os.environ[‘DASHBOARD_HOST’]=‘0.0.0.0’; os.environ[‘DASHBOARD_PORT’]=os.environ.get(‘PORT’,‘10000’); import runpy; runpy.run_path(‘server.py’, run_name=’main’)"”
+    buildCommand: python –version
+    startCommand: python server.py
     healthCheckPath: /api/health
