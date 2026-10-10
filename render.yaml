@@ -1,8 +1,9 @@
 services:
+
 * type: web
     name: cross-market-daily-review
     runtime: python
     plan: free
-    buildCommand: python –version
-    startCommand: python server.py
+    buildCommand: “python –version”
+    startCommand: “python server.py”
     healthCheckPath: /api/health
