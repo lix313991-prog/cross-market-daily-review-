@@ -11,8 +11,8 @@ from urllib.error import HTTPError, URLError
 import json, os, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent
-HOST = os.environ.get('DASHBOARD_HOST', '127.0.0.1')
-PORT = int(os.environ.get('DASHBOARD_PORT', '8765'))
+HOST = "0.0.0.0"
+PORT = int(os.environ.get("PORT", "10000"))
 UPSTREAM = os.environ.get('QUOTE_API_BASE', 'https://api.ashareapi.com/v1/quote')
 TIMEOUT = float(os.environ.get('QUOTE_TIMEOUT', '12'))
 
